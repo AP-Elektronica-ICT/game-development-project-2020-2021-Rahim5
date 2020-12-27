@@ -24,9 +24,9 @@ namespace _2DGame
 
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            animation.Update();
+            animation.Update(gameTime);
         }
 
         public void Draw(SpriteBatch _spriteBatch)
