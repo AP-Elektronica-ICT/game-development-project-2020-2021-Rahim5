@@ -7379,11 +7379,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rahim\\OneDrive\\Bureaublad\\Game\\2DGame\\2DGame\\2DGame.csproj",
+      "projectUniqueName": "C:\\Users\\Rahim\\SCHOOL\\3EACL2\\Game Development\\game-development-project-2020-2021-Rahim5\\2DGame\\2DGame.csproj",
       "projectName": "2DGame",
-      "projectPath": "C:\\Users\\Rahim\\OneDrive\\Bureaublad\\Game\\2DGame\\2DGame\\2DGame.csproj",
+      "projectPath": "C:\\Users\\Rahim\\SCHOOL\\3EACL2\\Game Development\\game-development-project-2020-2021-Rahim5\\2DGame\\2DGame.csproj",
       "packagesPath": "C:\\Users\\Rahim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rahim\\OneDrive\\Bureaublad\\Game\\2DGame\\2DGame\\obj\\",
+      "outputPath": "C:\\Users\\Rahim\\SCHOOL\\3EACL2\\Game Development\\game-development-project-2020-2021-Rahim5\\2DGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
