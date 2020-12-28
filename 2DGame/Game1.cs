@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using _2DGame.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace _2DGame
 {
@@ -9,7 +11,9 @@ namespace _2DGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Texture2D playerTexture;
+        private Texture2D playerTextureIdle;
+        private Texture2D playerTextureRunning;
+        private List<Texture2D> playerTextures;
         Player player;
 
         public Game1()
@@ -33,16 +37,19 @@ namespace _2DGame
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
-            playerTexture = Content.Load<Texture2D>("trump_run");
-
             InitializeGameObjects();
+            // TODO: use this.Content to load your game content here
+            playerTextureIdle = Content.Load<Texture2D>("rsz_trump_iddle");
+            playerTextureRunning = Content.Load<Texture2D>("rsz_trump_run");
+            playerTextures.Add(playerTextureIdle);
+            playerTextures.Add(playerTextureRunning);
+            
         }
 
         private void InitializeGameObjects()
         {
-            player = new Player(playerTexture);
+            playerTextures = new List<Texture2D>();
+            player = new Player(playerTextures, new KeyBoardReader()); ;
         }
 
         protected override void Update(GameTime gameTime)

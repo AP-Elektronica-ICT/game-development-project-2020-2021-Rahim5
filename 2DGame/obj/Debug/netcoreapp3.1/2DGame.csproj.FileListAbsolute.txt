@@ -73,3 +73,5 @@ C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\trump_iddle.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\trump_run.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\trump_walk.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\rsz_trump_iddle.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\rsz_trump_run.xnb

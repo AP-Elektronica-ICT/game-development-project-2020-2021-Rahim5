@@ -26,7 +26,7 @@ namespace _2DGame.Animations
         {
             CurrentFrame = frames[counter];
             frameMovement += CurrentFrame.SourceRectangle.Width * gameTime.ElapsedGameTime.TotalSeconds;
-            if(frameMovement>=1000/90)
+            if(frameMovement>=1000/60)
             {
                 counter++;
                 frameMovement = 0;
