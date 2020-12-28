@@ -9,6 +9,6 @@ namespace _2DGame.Input
     {
         bool RunningLeft { get; set; }
         bool RunningRight { get; set; }
-        Vector2 ReadInput();
+        Vector2 ReadInput(GameTime gameTime);
     }
 }
