@@ -68,6 +68,10 @@ namespace _2DGame
                 currentTexture = playerTextures[0];
             }
 
+            if (position.Y >= 600)
+            {
+                inputReader.HasJumped = false;
+            }
             position += direction;
             currentAnimation.Update(gameTime);
         }

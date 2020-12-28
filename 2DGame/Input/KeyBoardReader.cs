@@ -8,17 +8,17 @@ namespace _2DGame.Input
 {
     public class KeyBoardReader : IInputReader
     {
-        Player player;
         public bool RunningLeft { get; set; }
         public bool RunningRight { get; set; }
-        bool HasJumped;
+        public bool HasJumped { get; set; }
         Vector2 direction;
+        double timer;
 
         public KeyBoardReader()
         {
             HasJumped = false;
-            
-            
+
+
         }
 
         public Vector2 ReadInput(GameTime gameTime)
@@ -45,22 +45,37 @@ namespace _2DGame.Input
             }
             if (state.IsKeyDown(Keys.Space) && HasJumped == false)
             {
-                while (gameTime.ElapsedGameTime.TotalSeconds < 1)
-                {
-                    direction = new Vector2(0, (float)(-20f * 1 / gameTime.ElapsedGameTime.TotalSeconds));
-                }
-                HasJumped = true;
 
+                timer = 0;
                 
+                while (timer <=2)
+                {
+                    timer += gameTime.ElapsedGameTime.TotalSeconds;
+                    direction.Y -= 1f;
+                }
+
+                if(timer>1)
+                {
+                    HasJumped = true;
+                }
                 
+
+
+
             }
             if (HasJumped == true)
             {
-                float i = 1;
-                direction.Y += 0.5f * i;
+                timer = 2;
+                  timer+= gameTime.ElapsedGameTime.TotalSeconds;
+                direction.Y += 4f * (float)timer;
+                
+            }
+            if (HasJumped == false)
+            {
+                timer = 0;
             }
             return direction;
         }
 
-    } 
+    }
 }
