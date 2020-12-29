@@ -8,9 +8,9 @@ namespace _2DGame
 {
     public class Block
     {
-        public Texture2D blockTexture;
-        public Vector2 blockPosition;
-        public Rectangle rectanglePortion;
+        Texture2D blockTexture;
+        Vector2 blockPosition;
+        Rectangle rectanglePortion;
         public Block(Texture2D texture, Vector2 position, Rectangle rectangle)
         {
             blockTexture = texture;
@@ -18,9 +18,9 @@ namespace _2DGame
             rectanglePortion = rectangle;
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public void Draw(SpriteBatch _spriteBatch, Texture2D texture)
         {
-            _spriteBatch.Draw(blockTexture,blockPosition,rectanglePortion,Color.White);
+            _spriteBatch.Draw(texture, blockPosition, rectanglePortion, Color.White);
         }
     }
 }

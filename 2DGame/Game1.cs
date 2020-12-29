@@ -54,7 +54,7 @@ namespace _2DGame
         {
             playerTextures = new List<Texture2D>();
             player = new Player(playerTextures, new KeyBoardReader());
-            level = new Level(level1);
+            level = new Level();
             level.CreateWorld();
         }
 
@@ -76,7 +76,7 @@ namespace _2DGame
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             player.Draw(_spriteBatch);
-            level.DrawWorld(_spriteBatch);
+            level.DrawWorld(_spriteBatch, level1);
             _spriteBatch.End();
             base.Draw(gameTime);
         }

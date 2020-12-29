@@ -9,38 +9,31 @@ namespace _2DGame
     
     class Level
     {
-        public Texture2D blockTexture;
+        Texture2D blockTexture;
 
-        public Level(Texture2D texture)
+        public Level()
         {
-            blockTexture = texture;
-            blockArray = new Block[10, 10];
-            for (int x = 0; x < 10; x++)
-            {
-                for (int y = 0; y < 10; y++)
-                {
-                    blockArray[x, y] = new Block(blockTexture, new Vector2(x * 72, y * 72), new Rectangle(0, 0, 72, 72));
-                }
-            }
+            blockArray = new Block[10, 10];           
             
         }
-        public Block[,] blockArray;
-        public byte[,] tileArray = new Byte[,]
+        Block[,] blockArray;
+        byte[,] tileArray = new Byte[,]
         {
+            {1,1,1,0,0,1,1,1,1,1 },
             {0,0,0,0,0,0,0,0,0,0 },
             {0,0,0,0,0,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0,0,0 },
-            {0,0,1,1,1,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0,0,0 },
-            {0,0,0,0,0,0,0,0,0,0 },
-            {0,0,0,0,1,1,1,1,0,0 },
-            {0,0,0,0,0,0,0,0,0,0 },
-            {0,0,0,0,1,1,1,1,0,0 },
-            {0,0,0,0,0,0,0,0,0,0 },
+            {0,0,1,1,1,0,0,0,0,1 },
+            {0,0,0,0,0,0,0,0,1,1 },
+            {0,0,0,0,0,0,0,1,1,1 },
+            {0,0,0,0,1,1,1,1,0,1 },
+            {0,0,0,0,0,0,0,0,0,1 },
+            {0,0,0,0,1,1,1,1,0,1 },
+            {1,1,0,0,0,0,0,0,0,0 },
         };
 
         public void CreateWorld()
         {
+           
             for (int x = 0; x < 10; x++)
             {
                 for (int y = 0; y < 10; y++)
@@ -53,7 +46,7 @@ namespace _2DGame
             }
         }
 
-        public void DrawWorld(SpriteBatch _spriteBatch)
+        public void DrawWorld(SpriteBatch _spriteBatch, Texture2D texture)
         {
             for (int x = 0; x < 10; x++)
             {
@@ -61,10 +54,11 @@ namespace _2DGame
                 {
                     if (blockArray[x, y] != null)
                     {
-                        blockArray[x, y].Draw(_spriteBatch);
+                        blockArray[x, y].Draw(_spriteBatch,texture);
                     }
                 }
             }
         }
     }
+
 }
