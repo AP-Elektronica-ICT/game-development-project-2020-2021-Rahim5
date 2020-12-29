@@ -47,18 +47,22 @@ namespace _2DGame.Input
             {
 
                 timer = 0;
-                
-                while (timer <=2)
-                {
-                    timer += gameTime.ElapsedGameTime.TotalSeconds;
-                    direction.Y -= 1f;
-                }
 
-                if(timer>1)
+                while (timer < 2)
+                {
+                    direction.Y -= 0.75f;
+                    timer += gameTime.ElapsedGameTime.TotalSeconds;
+                }
+                
+
+                
+
+
+                if (timer > 1)
                 {
                     HasJumped = true;
                 }
-                
+
 
 
 
@@ -66,9 +70,9 @@ namespace _2DGame.Input
             if (HasJumped == true)
             {
                 timer = 2;
-                  timer+= gameTime.ElapsedGameTime.TotalSeconds;
+                timer += gameTime.ElapsedGameTime.TotalSeconds;
                 direction.Y += 4f * (float)timer;
-                
+
             }
             if (HasJumped == false)
             {

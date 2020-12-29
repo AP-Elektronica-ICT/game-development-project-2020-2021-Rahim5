@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/trump_iddle.png</SourceFile>
-  <SourceTime>2020-12-27T22:26:55.0165102+01:00</SourceTime>
-  <DestFile>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/bin/Windows/trump_iddle.xnb</DestFile>
-  <DestTime>2020-12-29T15:51:01.3050026+01:00</DestTime>
+  <SourceFile>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/level.png</SourceFile>
+  <SourceTime>2020-12-29T14:39:40.6622988+01:00</SourceTime>
+  <DestFile>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/bin/Windows/level.xnb</DestFile>
+  <DestTime>2020-12-29T15:51:00.9829202+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

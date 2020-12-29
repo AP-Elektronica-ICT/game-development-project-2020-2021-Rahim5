@@ -13,8 +13,10 @@ namespace _2DGame
         private SpriteBatch _spriteBatch;
         private Texture2D playerTextureIdle;
         private Texture2D playerTextureRunning;
+        private Texture2D level1;
         private List<Texture2D> playerTextures;
         Player player;
+        Level level;
 
         public Game1()
         {
@@ -41,15 +43,19 @@ namespace _2DGame
             // TODO: use this.Content to load your game content here
             playerTextureIdle = Content.Load<Texture2D>("rsz_trump_iddle");
             playerTextureRunning = Content.Load<Texture2D>("rsz_trump_run");
+            level1 = Content.Load<Texture2D>("level");
             playerTextures.Add(playerTextureIdle);
             playerTextures.Add(playerTextureRunning);
+            
             
         }
 
         private void InitializeGameObjects()
         {
             playerTextures = new List<Texture2D>();
-            player = new Player(playerTextures, new KeyBoardReader()); ;
+            player = new Player(playerTextures, new KeyBoardReader());
+            level = new Level(level1);
+            level.CreateWorld();
         }
 
         protected override void Update(GameTime gameTime)
@@ -70,6 +76,7 @@ namespace _2DGame
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             player.Draw(_spriteBatch);
+            level.DrawWorld(_spriteBatch);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
