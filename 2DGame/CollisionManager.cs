@@ -10,9 +10,15 @@ namespace _2DGame
         public bool CheckCollision(Rectangle rect1, Rectangle rect2)
         {
             if (rect1.Intersects(rect2))
+            {
                 return true;
+            }
+            else
+            {
+                return false;
+            }
 
-            return false;
+            
         }
     }
 }

@@ -15,8 +15,10 @@ namespace _2DGame
         private Texture2D playerTextureIdle;
         private Texture2D playerTextureRunning;
         private Texture2D level1;
+        private Texture2D red;
         private List<Texture2D> playerTextures;
         CollisionManager collisionManager;
+        
         Player player;
         Level level;
 
@@ -46,6 +48,7 @@ namespace _2DGame
             playerTextureIdle = Content.Load<Texture2D>("rsz_trump_iddle");
             playerTextureRunning = Content.Load<Texture2D>("rsz_trump_run");
             level1 = Content.Load<Texture2D>("level");
+            red = Content.Load<Texture2D>("red");
             playerTextures.Add(playerTextureIdle);
             playerTextures.Add(playerTextureRunning);
 
@@ -73,15 +76,24 @@ namespace _2DGame
                 {
                     if (collisionManager.CheckCollision(player.collisionRectangle, block.collisionRectangle))
                     {
-                        if (player.position.Y+128 > block.collisionRectangle.Y)
+
+
+                        if (player.collisionRectangle.Left <= block.collisionRectangle.Right)
                         {
-                            player.position.X = block.collisionRectangle.X - 108;
+                            //player.position.X = block.collisionRectangle.X - 60;
                         }
-                        else if (player.position.Y + 128 < block.collisionRectangle.Y && (int)player.position.X + (player.currentTexture.Width / 6)>block.collisionRectangle.X)
+                        if (player.collisionRectangle.Left <= block.collisionRectangle.Right)
                         {
-                            player.position.Y = block.collisionRectangle.Y - 128;
+                            //player.position.X = block.collisionRectangle.X + 98;
                         }
-                        
+                        if (player.collisionRectangle.Bottom >= block.collisionRectangle.Top)
+                        {
+                            player.position.Y = block.collisionRectangle.Y - 115;
+                            player.inputReader.HasJumped = false;
+                        }
+
+
+
                     }
                 }
             }
@@ -95,8 +107,8 @@ namespace _2DGame
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            player.Draw(_spriteBatch);
-            level.DrawWorld(_spriteBatch, level1);
+            player.Draw(_spriteBatch, red);
+            level.DrawWorld(_spriteBatch, level1, red);
             _spriteBatch.End();
             base.Draw(gameTime);
         }

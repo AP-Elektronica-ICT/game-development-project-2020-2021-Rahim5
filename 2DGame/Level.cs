@@ -19,12 +19,12 @@ namespace _2DGame
         public Block[,] blockArray;
         byte[,] tileArray = new Byte[,]
         {
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,1,1},
             {0,0,0,0,0,0,0,0,0,0,0,1},
             {0,0,0,0,0,0,0,0,0,0,0,1},
             {0,0,0,0,0,0,0,0,0,0,1,1},
-            {0,0,0,0,0,0,0,0,0,1,0,1},
-            {0,0,0,0,0,0,0,0,1,1,0,1},
-            {0,0,0,0,0,0,0,1,1,1,0,1},
+            {0,0,0,0,0,0,0,0,0,1,1,1},
             {0,0,0,0,1,1,1,1,0,1,0,1},
             {0,0,0,0,0,0,0,0,0,1,0,1},
             {0,0,0,0,1,1,1,1,0,1,0,1},
@@ -46,7 +46,7 @@ namespace _2DGame
             }
         }
 
-        public void DrawWorld(SpriteBatch _spriteBatch, Texture2D texture)
+        public void DrawWorld(SpriteBatch _spriteBatch, Texture2D texture, Texture2D borderTexture)
         {
             for (int x = 0; x < 10; x++)
             {
@@ -54,7 +54,7 @@ namespace _2DGame
                 {
                     if (blockArray[x, y] != null)
                     {
-                        blockArray[x, y].Draw(_spriteBatch, texture);
+                        blockArray[x, y].Draw(_spriteBatch, texture, borderTexture);
                     }
                 }
             }

@@ -20,7 +20,12 @@ namespace _2DGame
         Animation currentAnimation;
         public Rectangle collisionRectangle;
         public  Vector2 position;
-        IInputReader inputReader;
+        public Vector2 gravity;
+        public IInputReader inputReader;
+        
+        
+
+        Rectangle border;
         public Player(List<Texture2D> textures, IInputReader reader)
         {
             playerTextures = new List<Texture2D>();
@@ -31,8 +36,9 @@ namespace _2DGame
             animationRunningRight = new Animation();
             currentAnimation = new Animation();
             inputReader = reader;
-            position = new Vector2(10, 600);
-            collisionRectangle = new Rectangle((int)position.X+20, (int)position.Y, 108, 128);
+            position = new Vector2(10, 500);
+            
+            collisionRectangle = new Rectangle((int)position.X + 35, (int)position.Y + 15, 60, 100);
 
             for (int i = 0; i < 10; i++)
             {
@@ -46,8 +52,9 @@ namespace _2DGame
             {
                 animationRunningRight.AddFrame(new AnimationFrame(new Rectangle(128 * i, 128, 128, 128)));
             }
-
-
+            
+            border = new Rectangle(0,0, 60, 100);
+            gravity = new Vector2(0, 1f);
 
 
         }
@@ -71,19 +78,20 @@ namespace _2DGame
                 currentTexture = playerTextures[0];
             }
 
-            if (position.Y >= 600)
-            {
-                inputReader.HasJumped = false;
-            }
+            
             position += direction;
-            collisionRectangle.X = (int)position.X;
+            position += gravity;
+            collisionRectangle.X = (int)position.X+35;
+            collisionRectangle.Y = (int)position.Y+15;
+            border.X = (int)position.X;
+            border.Y = (int)position.Y;
             currentAnimation.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public void Draw(SpriteBatch _spriteBatch,Texture2D test)
         {
 
-
+            _spriteBatch.Draw(test, new Vector2(position.X+35,position.Y+15), collisionRectangle, Color.Red*0.5f);
             _spriteBatch.Draw(currentTexture, position, currentAnimation.CurrentFrame.SourceRectangle, Color.White);
         }
     }

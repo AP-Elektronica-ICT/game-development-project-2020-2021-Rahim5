@@ -9,6 +9,6 @@ namespace _2DGame.interfaces
     interface IGameObject
     {
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch _spriteBatch);
+        void Draw(SpriteBatch _spriteBatch, Texture2D texture);
     }
 }

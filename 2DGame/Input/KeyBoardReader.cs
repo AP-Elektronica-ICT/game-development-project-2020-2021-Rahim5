@@ -14,6 +14,7 @@ namespace _2DGame.Input
         Vector2 direction;
         double timer;
 
+
         public KeyBoardReader()
         {
             HasJumped = false;
