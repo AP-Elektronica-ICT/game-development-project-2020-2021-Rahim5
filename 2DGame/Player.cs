@@ -12,13 +12,14 @@ namespace _2DGame
     public class Player : IGameObject
     {
         List<Texture2D> playerTextures;
-        Texture2D currentTexture;
+        public Texture2D currentTexture;
 
         Animation animationIdle;
         Animation animationRunningLeft;
         Animation animationRunningRight;
         Animation currentAnimation;
-        private Vector2 position;
+        public Rectangle collisionRectangle;
+        public  Vector2 position;
         IInputReader inputReader;
         public Player(List<Texture2D> textures, IInputReader reader)
         {
@@ -31,6 +32,8 @@ namespace _2DGame
             currentAnimation = new Animation();
             inputReader = reader;
             position = new Vector2(10, 600);
+            collisionRectangle = new Rectangle((int)position.X+20, (int)position.Y, 108, 128);
+
             for (int i = 0; i < 10; i++)
             {
                 animationIdle.AddFrame(new AnimationFrame(new Rectangle(128 * i, 0, 128, 128)));
@@ -73,6 +76,7 @@ namespace _2DGame
                 inputReader.HasJumped = false;
             }
             position += direction;
+            collisionRectangle.X = (int)position.X;
             currentAnimation.Update(gameTime);
         }
 

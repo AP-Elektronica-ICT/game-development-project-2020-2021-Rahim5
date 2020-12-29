@@ -9,13 +9,15 @@ namespace _2DGame
     public class Block
     {
         Texture2D blockTexture;
-        Vector2 blockPosition;
+        public Vector2 blockPosition;
         Rectangle rectanglePortion;
+        public Rectangle collisionRectangle;
         public Block(Texture2D texture, Vector2 position, Rectangle rectangle)
         {
             blockTexture = texture;
             blockPosition = position;
             rectanglePortion = rectangle;
+            collisionRectangle = new Rectangle((int)blockPosition.X, (int)blockPosition.Y, 72, 72);
         }
 
         public void Draw(SpriteBatch _spriteBatch, Texture2D texture)

@@ -50,7 +50,7 @@ namespace _2DGame.Input
 
                 while (timer < 2)
                 {
-                    direction.Y -= 0.75f;
+                    direction.Y -= 1f;
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
                 }
                 

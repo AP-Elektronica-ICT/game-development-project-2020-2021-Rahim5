@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace _2DGame
 {
@@ -15,6 +16,7 @@ namespace _2DGame
         private Texture2D playerTextureRunning;
         private Texture2D level1;
         private List<Texture2D> playerTextures;
+        CollisionManager collisionManager;
         Player player;
         Level level;
 
@@ -23,15 +25,15 @@ namespace _2DGame
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            _graphics.PreferredBackBufferWidth = 1600;  
-            _graphics.PreferredBackBufferHeight = 900;   
+            _graphics.PreferredBackBufferWidth = 1600;
+            _graphics.PreferredBackBufferHeight = 900;
             _graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+            collisionManager = new CollisionManager();
 
             base.Initialize();
         }
@@ -46,8 +48,8 @@ namespace _2DGame
             level1 = Content.Load<Texture2D>("level");
             playerTextures.Add(playerTextureIdle);
             playerTextures.Add(playerTextureRunning);
-            
-            
+
+
         }
 
         private void InitializeGameObjects()
@@ -65,6 +67,24 @@ namespace _2DGame
 
             // TODO: Add your update logic here
             player.Update(gameTime);
+            foreach (var block in level.blockArray)
+            {
+                if (block != null)
+                {
+                    if (collisionManager.CheckCollision(player.collisionRectangle, block.collisionRectangle))
+                    {
+                        if (player.position.Y+128 > block.collisionRectangle.Y)
+                        {
+                            player.position.X = block.collisionRectangle.X - 108;
+                        }
+                        else if (player.position.Y + 128 < block.collisionRectangle.Y && (int)player.position.X + (player.currentTexture.Width / 6)>block.collisionRectangle.X)
+                        {
+                            player.position.Y = block.collisionRectangle.Y - 128;
+                        }
+                        
+                    }
+                }
+            }
 
             base.Update(gameTime);
         }
