@@ -77,7 +77,7 @@ namespace _2DGame
         private void InitializeGameObjects()
         {
             playerTextures = new List<Texture2D>();
-            player = new Player(playerTextures, new KeyBoardReader());
+            player = new Player(playerTextures);
             level = new Level();
             level.CreateWorld();
         }
@@ -103,25 +103,30 @@ namespace _2DGame
                     if (collisionManager.CheckCollision(player.collisionRectangle, block.collisionRectangle))
                     {
 
-
-
-
-                        if (player.collisionRectangle.Top <= block.collisionRectangle.Bottom && player.collisionRectangle.Bottom > block.collisionRectangle.Bottom)
+                        if(player.collisionRectangle.Bottom>block.collisionRectangle.Top && player.collisionRectangle.Top < block.collisionRectangle.Top)
                         {
-                            player.position.Y = block.blockPosition.Y - 70;
-                        }
-                        else if (player.collisionRectangle.Bottom >= block.collisionRectangle.Top && player.collisionRectangle.Top + 90 < block.collisionRectangle.Top)
-                        {
-
                             player.position.Y = block.blockPosition.Y - 115;
-                            player.inputReader.HasJumped = false;
+                            player.hasJumped = false;
 
                         }
-                        else
+                        else if(player.collisionRectangle.Top<block.collisionRectangle.Bottom && player.collisionRectangle.Bottom > block.collisionRectangle.Bottom)
                         {
-                            player.inputReader.HasJumped = true;
-
+                            player.velocity.Y = 0f;
+                            
+                            player.velocity.Y += 4f;
                         }
+                        else if(player.collisionRectangle.Right>block.collisionRectangle.Left&& player.collisionRectangle.Left < block.collisionRectangle.Left&& player.collisionRectangle.Bottom>block.collisionRectangle.Top&&player.collisionRectangle.Top<block.collisionRectangle.Bottom)
+                        {
+                            player.velocity.X = 0f;
+                        }
+                        else if(player.collisionRectangle.Left<block.collisionRectangle.Right&& player.collisionRectangle.Right > block.collisionRectangle.Right && player.collisionRectangle.Bottom > block.collisionRectangle.Top && player.collisionRectangle.Top < block.collisionRectangle.Bottom)
+                        {
+                            player.velocity.X = 0f;
+                        }
+                        
+
+
+                       
 
 
 
