@@ -22,6 +22,7 @@ namespace _2DGame
         public  Vector2 position;
         public Vector2 gravity;
         public IInputReader inputReader;
+        public Vector2 velocity;
         
         
 
@@ -36,7 +37,7 @@ namespace _2DGame
             animationRunningRight = new Animation();
             currentAnimation = new Animation();
             inputReader = reader;
-            position = new Vector2(10, 500);
+            position = new Vector2(10, 400);
             
             collisionRectangle = new Rectangle((int)position.X + 35, (int)position.Y + 15, 60, 100);
 
@@ -54,14 +55,14 @@ namespace _2DGame
             }
             
             border = new Rectangle(0,0, 60, 100);
-            gravity = new Vector2(0, 1f);
+            gravity = new Vector2(0, 4f);
 
 
         }
 
         public void Update(GameTime gameTime)
         {
-            var direction = inputReader.ReadInput(gameTime);
+             velocity = inputReader.ReadInput(gameTime);
             if (inputReader.RunningLeft)
             {
                 currentAnimation = animationRunningLeft;
@@ -79,19 +80,19 @@ namespace _2DGame
             }
 
             
-            position += direction;
+            position += velocity;
             position += gravity;
             collisionRectangle.X = (int)position.X+35;
             collisionRectangle.Y = (int)position.Y+15;
-            border.X = (int)position.X;
-            border.Y = (int)position.Y;
+            border.X = collisionRectangle.X;
+            border.Y = collisionRectangle.Y;
             currentAnimation.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch _spriteBatch,Texture2D test)
+        public void Draw(SpriteBatch _spriteBatch)
         {
 
-            _spriteBatch.Draw(test, new Vector2(position.X+35,position.Y+15), collisionRectangle, Color.Red*0.5f);
+            
             _spriteBatch.Draw(currentTexture, position, currentAnimation.CurrentFrame.SourceRectangle, Color.White);
         }
     }

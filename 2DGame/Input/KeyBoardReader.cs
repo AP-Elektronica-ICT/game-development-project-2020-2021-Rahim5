@@ -11,8 +11,9 @@ namespace _2DGame.Input
         public bool RunningLeft { get; set; }
         public bool RunningRight { get; set; }
         public bool HasJumped { get; set; }
-        Vector2 direction;
+        public Vector2 direction;
         double timer;
+
 
 
         public KeyBoardReader()
@@ -49,17 +50,19 @@ namespace _2DGame.Input
 
                 timer = 0;
 
+
                 while (timer < 2)
                 {
-                    direction.Y -= 1f;
+                    direction.Y -=2f;
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
                 }
                 
+                
 
                 
 
 
-                if (timer > 1)
+                if (timer > 2)
                 {
                     HasJumped = true;
                 }
@@ -72,7 +75,7 @@ namespace _2DGame.Input
             {
                 timer = 2;
                 timer += gameTime.ElapsedGameTime.TotalSeconds;
-                direction.Y += 4f * (float)timer;
+                direction.Y += 0.04f * (float)timer;
 
             }
             if (HasJumped == false)

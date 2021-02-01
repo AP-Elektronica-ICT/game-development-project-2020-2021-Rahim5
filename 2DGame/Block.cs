@@ -18,13 +18,13 @@ namespace _2DGame
             blockTexture = texture;
             blockPosition = position;
             rectanglePortion = rectangle;
-            collisionRectangle = new Rectangle((int)blockPosition.X, (int)blockPosition.Y, 72, 72);
-            border = new Rectangle(0, 0, 72, 72);
+            collisionRectangle = new Rectangle((int)blockPosition.X, (int)blockPosition.Y, 70, 70);
+            border = new Rectangle(0, 0, 70, 70);
         }
 
-        public void Draw(SpriteBatch _spriteBatch, Texture2D texture,Texture2D textureBorder)
+        public void Draw(SpriteBatch _spriteBatch, Texture2D texture)
         {
-            _spriteBatch.Draw(textureBorder, blockPosition, border, Color.Yellow*0.5f);
+            
             _spriteBatch.Draw(texture, blockPosition, rectanglePortion, Color.White);
         }
     }

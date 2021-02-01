@@ -4,6 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/background.jpg</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Controls/Button.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Fonts/Font.spritefont</File>
     <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/level.png</File>
     <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/red.png</File>
     <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/rsz_trump_iddle.png</File>
@@ -13,6 +16,9 @@
     <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/trump_walk.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
