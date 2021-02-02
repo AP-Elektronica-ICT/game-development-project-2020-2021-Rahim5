@@ -81,3 +81,5 @@ C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\background.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Controls\Button.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Coins\coins.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Coins\resized_coins.xnb

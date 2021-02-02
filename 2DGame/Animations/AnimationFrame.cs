@@ -12,5 +12,7 @@ namespace _2DGame.Animations
         {
             SourceRectangle = rectangle;
         }
+
+        
     }
 }

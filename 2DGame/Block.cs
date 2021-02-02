@@ -8,7 +8,7 @@ namespace _2DGame
 {
     public class Block
     {
-        Texture2D blockTexture;
+        public Texture2D blockTexture;
         public Vector2 blockPosition;
         Rectangle rectanglePortion;
         Rectangle border;
