@@ -62,7 +62,6 @@ C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
-C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\obj\Debug\netcoreapp3.1\2DGame.csprojAssemblyReference.cache
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\obj\Debug\netcoreapp3.1\2DGame.AssemblyInfoInputs.cache
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\obj\Debug\netcoreapp3.1\2DGame.AssemblyInfo.cs
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\obj\Debug\netcoreapp3.1\2DGame.csproj.CoreCompileInputs.cache
@@ -83,3 +82,11 @@ C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\Font.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Coins\coins.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Coins\resized_coins.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Sounds\coinSound.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Sounds\jumpingSound.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Sounds\themeSound.wma
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Sounds\themeSound.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\obj\Debug\netcoreapp3.1\2DGame.csprojAssemblyReference.cache
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\gameOver.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\restartGame.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\score.xnb

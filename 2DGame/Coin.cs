@@ -37,6 +37,8 @@ namespace _2DGame
 
         public void Update(GameTime gameTime)
         {
+            
+            
             coinAnimation.Update(gameTime);
         }
 
@@ -44,11 +46,8 @@ namespace _2DGame
         {
 
 
-            if (isCollected == true)
-            {
-
-            }
-            else spriteBatch.Draw(texture, position, coinAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 0.1f, SpriteEffects.None, 0f);
+            
+             spriteBatch.Draw(texture, position, coinAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 0.1f, SpriteEffects.None, 0f);
 
         }
 

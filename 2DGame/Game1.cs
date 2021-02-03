@@ -1,8 +1,10 @@
 ﻿using _2DGame.Input;
 using _2DGame.States;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,9 +32,17 @@ namespace _2DGame
         private Texture2D coinTexture;
         private Texture2D red;
         private Texture2D background;
+        private SpriteFont scoreFont;
+        private SpriteFont gameOverFont;
+        private SpriteFont restartGameFont;
+
+        private int score = 0;
+        private bool gameOver = false;
         private List<Texture2D> playerTextures;
         CollisionManager collisionManager;
-
+        SoundEffect jumpSound;
+        SoundEffect coinSound;
+        Song themeSong;
         Player player;
         Level level;
 
@@ -68,6 +78,14 @@ namespace _2DGame
             playerTextureRunning = Content.Load<Texture2D>("rsz_trump_run");
             level1 = Content.Load<Texture2D>("level");
             red = Content.Load<Texture2D>("red");
+            jumpSound = Content.Load<SoundEffect>("Sounds/jumpingSound");
+            themeSong = Content.Load<Song>("Sounds/themeSound");
+            scoreFont = Content.Load<SpriteFont>("Fonts/score");
+            gameOverFont = Content.Load<SpriteFont>("Fonts/gameOver");
+            restartGameFont = Content.Load<SpriteFont>("Fonts/restartGame");
+            MediaPlayer.Play(themeSong);
+            MediaPlayer.IsRepeating = true;
+            coinSound = Content.Load<SoundEffect>("Sounds/coinSound");
             background = Content.Load<Texture2D>("background");
             coinTexture = Content.Load<Texture2D>("Coins/coins");
             playerTextures.Add(playerTextureIdle);
@@ -92,11 +110,33 @@ namespace _2DGame
             //    _nextState = null;
             //}
             //_currentState.Update(gameTime);
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here
-            player.Update(gameTime);
+            player.Update(gameTime, jumpSound);
+
+            if (player.position.X <= 0)
+                player.position.X = 0;
+            if (player.position.X + 128 >= 1600)
+                player.position.X = 1472;
+            if (player.position.Y <= 0)
+            {
+                player.velocity.Y = 0f;
+                float i = 1;
+                player.velocity.Y += 0.40f * i;
+            }
+
+            if (player.position.Y + 128 > 900)
+            {
+                gameOver = true;
+                MediaPlayer.Stop();
+                player.hasJumped = true;
+                player.velocity = Vector2.Zero;
+                player.gravity = 0f;
+            }
+
             foreach (var block in level.blockArray)
             {
                 if (block != null)
@@ -161,24 +201,52 @@ namespace _2DGame
                 }
             }
 
-            foreach (Coin coin in level.coinArray)
+            //foreach (Coin coin in level.coinArray)
+            //{
+            //    if (coin != null)
+            //    {
+            //        if (collisionManager.CheckCollision(player.collisionRectangle, coin.collisionRectangle))
+            //        {
+            //            jumpSound.Play();
+            //            coin.isCollected = true;
+
+            //        }
+            //    }
+            //}
+
+            for (int x = 0; x < 22; x++)
             {
-                if (coin != null)
+                for (int y = 0; y < 12; y++)
                 {
-                    if (collisionManager.CheckCollision(player.collisionRectangle, coin.collisionRectangle))
+                    if (level.coinArray[x, y] != null)
                     {
-                        coin.isCollected = true;
-                        
+                        if (collisionManager.CheckCollision(player.collisionRectangle, level.coinArray[x, y].collisionRectangle))
+                        {
+                            coinSound.Play();
+                            score++;
+                            level.coinArray[x, y] = null;
+                        }
                     }
                 }
             }
             
+            if (gameOver == true && Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                level = new Level();
+                level.CreateWorld();
+                MediaPlayer.Play(themeSong);
+                player.position = new Vector2(10, 600);
+                score = 0;
+                gameOver = false;
+
+            }
 
 
             level.UpdateLevel(gameTime);
 
             base.Update(gameTime);
         }
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -188,10 +256,19 @@ namespace _2DGame
 
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
-            player.Draw(_spriteBatch);
-            level.DrawWorld(_spriteBatch, level1, coinTexture);
-
+            if (gameOver == false)
+            {
+                _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
+                player.Draw(_spriteBatch);
+                level.DrawWorld(_spriteBatch, level1, coinTexture);
+                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2(10, 10), Color.Black*0.5f);
+            }
+            else if (gameOver == true)
+            {
+                _spriteBatch.DrawString(gameOverFont, "GAME OVER", new Vector2((_graphics.PreferredBackBufferWidth / 2) - gameOverFont.MeasureString("GAME OVER").X / 2, (_graphics.PreferredBackBufferHeight / 2) - gameOverFont.MeasureString("GAME OVER").Y / 2 - 100), Color.Black);
+                _spriteBatch.DrawString(restartGameFont, "Press Enter To Restart", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Press Enter To Restart").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Press Enter To Restart").Y / 2), Color.Black * 0.8f);
+                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2((_graphics.PreferredBackBufferWidth / 2) - scoreFont.MeasureString("Score: " + score.ToString()).X / 2, (_graphics.PreferredBackBufferHeight / 2) - scoreFont.MeasureString("Score: " + score).Y / 2 + 100), Color.Black);
+            }
             _spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -68,6 +68,27 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Font.spritefont
 
+#begin Fonts/gameOver.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/gameOver.spritefont
+
+#begin Fonts/restartGame.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/restartGame.spritefont
+
+#begin Fonts/score.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/score.spritefont
+
 #begin level.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,6 +136,24 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:rsz_trump_run.png
+
+#begin Sounds/coinSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/coinSound.wav
+
+#begin Sounds/jumpingSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/jumpingSound.wav
+
+#begin Sounds/themeSound.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/themeSound.mp3
 
 #begin trump_iddle.png
 /importer:TextureImporter

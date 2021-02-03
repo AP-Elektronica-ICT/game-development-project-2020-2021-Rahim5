@@ -7,13 +7,15 @@ using System.Collections.Generic;
 using System.Text;
 using _2DGame.Input;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace _2DGame
 {
-    public class Player : IGameObject
+    public class Player
     {
         List<Texture2D> playerTextures;
         public Texture2D currentTexture;
+        
 
         Animation animationIdle;
         Animation animationRunningLeft;
@@ -33,6 +35,7 @@ namespace _2DGame
         Rectangle border;
         public Player(List<Texture2D> textures)
         {
+           
             playerTextures = new List<Texture2D>();
             playerTextures = textures;
 
@@ -65,7 +68,7 @@ namespace _2DGame
 
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, SoundEffect jumpSound)
         {
             position += velocity;
             position.Y += gravity;
@@ -77,7 +80,7 @@ namespace _2DGame
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false)
             {
-                
+                jumpSound.Play();
                 position.Y -= 30f;
                 velocity.Y = -10f;
                 hasJumped = true;
