@@ -90,3 +90,4 @@ C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\gameOver.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\restartGame.xnb
 C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Fonts\score.xnb
+C:\Users\Rahim\SCHOOL\3EACL2\Game Development\game-development-project-2020-2021-Rahim5\2DGame\bin\Debug\netcoreapp3.1\Content\Sounds\hooray.xnb

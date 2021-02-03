@@ -9,15 +9,20 @@ namespace _2DGame
     {
         Texture2D blockTexture;
         Texture2D coinTexture;
+        Texture2D endMarkTexture;
+        public EndMark endMark;
+        public int level = 1;
 
         
         
 
-        public Level()
+        public Level(int _level)
         {
+            level = _level;
             blockArray = new Block[22, 12];
             movingBlockArray = new Block[22, 12];
             coinArray = new Coin[22, 12];
+
             
 
 
@@ -27,7 +32,7 @@ namespace _2DGame
         public Block[,] movingBlockArray;
         public Coin[,] coinArray;
 
-        int[,] tileArray = new int[,]
+        int[,] tileArray1 = new int[,]
         {
             {0,0,0,0,0,0,0,0,0,0,0,1},
             {0,0,0,0,0,0,0,0,0,0,0,2},
@@ -38,7 +43,7 @@ namespace _2DGame
             {0,0,0,0,0,0,4,0,0,3,0,0},
             {0,0,4,0,0,9,5,0,0,0,0,0},
             {0,0,5,0,0,0,5,0,0,0,0,1},
-            {0,0,6,0,0,0,5,0,0,0,0,2},
+            {0,10,6,0,0,0,5,0,0,0,0,2},
             {0,0,0,0,0,9,5,0,0,0,0,3},
             {0,0,0,0,0,0,6,0,0,0,0,0},
             {0,0,9,0,0,0,0,0,0,1,0,0},
@@ -48,55 +53,138 @@ namespace _2DGame
             {0,0,0,1,0,0,0,0,0,0,0,1},
             {0,0,9,2,0,0,0,8,0,0,9,2},
             {0,0,0,3,0,0,0,0,0,0,0,3},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,7,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+        };
+
+        int[,] tileArray2 = new int[,]
+        {
             {0,0,0,0,0,0,0,0,0,0,0,1},
-            {0,0,0,0,7,0,0,0,0,0,0,2},
-            {0,0,0,0,0,0,0,0,0,0,0,3},
+            {0,0,10,1,0,0,0,0,0,0,0,2},
+            {0,0,0,2,0,0,0,0,0,0,0,3},
+            {0,0,0,3,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,7,0,0,0,0},
+            {0,9,8,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,9,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,8,0,0,0,0,0,8,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,4,0,9,0,0,0,0,0,0,0},
+            {0,0,5,0,0,0,0,0,0,0,0,0},
+            {0,0,6,0,0,0,0,7,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,0,0,0,0,0,0,0},
+            {0,0,0,9,2,0,0,0,4,0,0,0},
+            {0,0,0,0,3,0,0,0,5,0,0,0},
+            {0,0,0,0,0,0,0,0,6,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,7,0,0,0,0,0,0},
         };
 
         public void CreateWorld()
         {
 
-            for (int x = 0; x < 22; x++)
+           if (level == 1)
             {
-                for (int y = 0; y < 12; y++)
+                for (int x = 0; x < 22; x++)
                 {
-                    if (tileArray[x, y] == 1)
+                    for (int y = 0; y < 12; y++)
                     {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 648, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 2)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70 , y * 70), new Rectangle(504, 576, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 3)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 504, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 4)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 648, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 5)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 576, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 6)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 504, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 7)
-                    {
-                        movingBlockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 8)
-                    {
-                        blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
-                    }
-                    else if (tileArray[x, y] == 9)
-                    {
-                        coinArray[x, y] = new Coin(coinTexture, new Vector2(x * 70, y * 70));
-                    }
+                        if (tileArray1[x, y] == 1)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 648, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 2)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 576, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 3)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 504, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 4)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 648, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 5)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 576, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 6)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 504, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 7)
+                        {
+                            movingBlockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 8)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
+                        }
+                        else if (tileArray1[x, y] == 9)
+                        {
+                            coinArray[x, y] = new Coin(coinTexture, new Vector2(x * 70, y * 70));
+                        }
+                        else if (tileArray1[x, y] == 10)
+                        {
+                            endMark = new EndMark(endMarkTexture, new Vector2(x * 70, y * 70), new Rectangle(288, 360, 70, 70));
+                        }
 
+                    }
+                }
+            }
+           else if (level == 2)
+            {
+                for (int x = 0; x < 22; x++)
+                {
+                    for (int y = 0; y < 12; y++)
+                    {
+                        if (tileArray2[x, y] == 1)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 648, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 2)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 576, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 3)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 504, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 4)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 648, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 5)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 576, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 6)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(504, 504, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 7)
+                        {
+                            movingBlockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 8)
+                        {
+                            blockArray[x, y] = new Block(blockTexture, new Vector2(x * 70, y * 70), new Rectangle(576, 432, 70, 70));
+                        }
+                        else if (tileArray2[x, y] == 9)
+                        {
+                            coinArray[x, y] = new Coin(coinTexture, new Vector2(x * 70, y * 70));
+                        }
+                        else if (tileArray2[x, y] == 10)
+                        {
+                            endMark = new EndMark(endMarkTexture, new Vector2(x * 70, y * 70), new Rectangle(288, 360, 70, 70));
+                        }
+
+                    }
                 }
             }
         }
@@ -124,6 +212,12 @@ namespace _2DGame
 
                 }
             }
+            
+                endMark.Draw(_spriteBatch, levelTexture);
+            
+            
+
+
         }
         double totalSeconds = 0;
         public void UpdateLevel(GameTime gameTime)

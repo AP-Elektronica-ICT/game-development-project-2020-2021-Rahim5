@@ -28,9 +28,8 @@ namespace _2DGame
 
         private Texture2D playerTextureIdle;
         private Texture2D playerTextureRunning;
-        private Texture2D level1;
+        private Texture2D levelTexture;
         private Texture2D coinTexture;
-        private Texture2D red;
         private Texture2D background;
         private SpriteFont scoreFont;
         private SpriteFont gameOverFont;
@@ -38,10 +37,14 @@ namespace _2DGame
 
         private int score = 0;
         private bool gameOver = false;
+        private bool finishedLevel1 = false;
+        private bool finishedLevel2 = false;
+        private bool startLevel2 = false;
         private List<Texture2D> playerTextures;
         CollisionManager collisionManager;
         SoundEffect jumpSound;
         SoundEffect coinSound;
+        SoundEffect hooraySound;
         Song themeSong;
         Player player;
         Level level;
@@ -76,8 +79,8 @@ namespace _2DGame
 
             playerTextureIdle = Content.Load<Texture2D>("rsz_trump_iddle");
             playerTextureRunning = Content.Load<Texture2D>("rsz_trump_run");
-            level1 = Content.Load<Texture2D>("level");
-            red = Content.Load<Texture2D>("red");
+            levelTexture = Content.Load<Texture2D>("level");
+
             jumpSound = Content.Load<SoundEffect>("Sounds/jumpingSound");
             themeSong = Content.Load<Song>("Sounds/themeSound");
             scoreFont = Content.Load<SpriteFont>("Fonts/score");
@@ -86,6 +89,7 @@ namespace _2DGame
             MediaPlayer.Play(themeSong);
             MediaPlayer.IsRepeating = true;
             coinSound = Content.Load<SoundEffect>("Sounds/coinSound");
+            hooraySound = Content.Load<SoundEffect>("Sounds/hooray");
             background = Content.Load<Texture2D>("background");
             coinTexture = Content.Load<Texture2D>("Coins/coins");
             playerTextures.Add(playerTextureIdle);
@@ -98,7 +102,7 @@ namespace _2DGame
         {
             playerTextures = new List<Texture2D>();
             player = new Player(playerTextures);
-            level = new Level();
+            level = new Level(1);
             level.CreateWorld();
         }
 
@@ -200,6 +204,32 @@ namespace _2DGame
 
                 }
             }
+            if (collisionManager.CheckCollision(player.collisionRectangle, level.endMark.collisionRectangle))
+            {
+                if (finishedLevel1 == false)
+                {
+                    hooraySound.Play();
+                    finishedLevel1 = true;
+                    player.position = new Vector2(10, 600);
+                    
+
+                }
+                else if (finishedLevel2 == false)
+                {
+                    hooraySound.Play();
+                    finishedLevel2 = true;
+                    startLevel2 = false;
+                }
+            }
+            if(finishedLevel1==true && Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                level = new Level(2);
+                startLevel2 = true;
+                level.CreateWorld();
+               
+                
+            }
+            
 
             //foreach (Coin coin in level.coinArray)
             //{
@@ -229,16 +259,36 @@ namespace _2DGame
                     }
                 }
             }
-            
+
             if (gameOver == true && Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                level = new Level();
+
+                finishedLevel1 = false;
+                finishedLevel2 = false;
+                startLevel2 = false;
+                level = new Level(1);
                 level.CreateWorld();
                 MediaPlayer.Play(themeSong);
                 player.position = new Vector2(10, 600);
                 score = 0;
                 gameOver = false;
+                
 
+            }
+            if(finishedLevel1==true && finishedLevel2==true && Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                finishedLevel1 = false;
+                finishedLevel2 = false;
+                startLevel2 = false;
+                level = new Level(1);
+                level.CreateWorld();
+                MediaPlayer.Play(themeSong);
+                player.position = new Vector2(10, 600);
+                score = 0;
+            }
+            if(finishedLevel1==true && finishedLevel2==true && Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Exit();
             }
 
 
@@ -256,19 +306,49 @@ namespace _2DGame
 
 
             _spriteBatch.Begin();
-            if (gameOver == false)
+
+
+            if (finishedLevel1 == true && finishedLevel2 == false)
+            {
+                _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
+                _spriteBatch.DrawString(gameOverFont, "LEVEL 1 CLEARED", new Vector2((_graphics.PreferredBackBufferWidth / 2) - gameOverFont.MeasureString("LEVEL 1 CLEARED").X / 2, (_graphics.PreferredBackBufferHeight / 2) - gameOverFont.MeasureString("LEVEL 1 CLEARED").Y / 2 - 100), Color.Black);
+                _spriteBatch.DrawString(restartGameFont, "Press Enter For Next Level", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Press Enter For Next Level").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Press Enter For Next Level").Y / 2), Color.Black * 0.6f);
+                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2((_graphics.PreferredBackBufferWidth / 2) - scoreFont.MeasureString("Score: " + score.ToString()).X / 2, (_graphics.PreferredBackBufferHeight / 2) - scoreFont.MeasureString("Score: " + score).Y / 2 + 100), Color.Black);
+
+                
+            }
+            else if(finishedLevel1==true && finishedLevel2 == true)
+            {
+                _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
+                _spriteBatch.DrawString(gameOverFont, "YOU WON!", new Vector2((_graphics.PreferredBackBufferWidth / 2) - gameOverFont.MeasureString("YOU WON!").X / 2, (_graphics.PreferredBackBufferHeight / 2) - gameOverFont.MeasureString("YOU WON!").Y / 2 - 100), Color.Black);
+                _spriteBatch.DrawString(restartGameFont, "Press Enter To Play Again", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Press Enter To Play Again").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Press Enter To Play Again").Y / 2), Color.Black * 0.6f);
+                _spriteBatch.DrawString(restartGameFont, "Or Press ESC To Quit", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Or Press ESC To Quit").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Or Press ESC To Quit").Y / 2+70), Color.Black * 0.6f);
+                _spriteBatch.DrawString(scoreFont, "Total Score: " + score, new Vector2((_graphics.PreferredBackBufferWidth / 2) - scoreFont.MeasureString("Total Score: " + score.ToString()).X / 2, (_graphics.PreferredBackBufferHeight / 2) - scoreFont.MeasureString("Total Score: " + score).Y / 2 + 130), Color.Black);
+            }
+            
+            if (gameOver == false && finishedLevel1 == false)
             {
                 _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
                 player.Draw(_spriteBatch);
-                level.DrawWorld(_spriteBatch, level1, coinTexture);
-                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2(10, 10), Color.Black*0.5f);
+                level.DrawWorld(_spriteBatch, levelTexture, coinTexture);
+                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2(10, 10), Color.Black * 0.5f);
             }
+            else if (gameOver == false && startLevel2 == true)
+            {
+                _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
+                player.Draw(_spriteBatch);
+                level.DrawWorld(_spriteBatch, levelTexture, coinTexture);
+                _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2(10, 10), Color.Black * 0.5f);
+            }
+
             else if (gameOver == true)
             {
+                _spriteBatch.Draw(background, new Rectangle(0, 0, 1600, 900), Color.White);
                 _spriteBatch.DrawString(gameOverFont, "GAME OVER", new Vector2((_graphics.PreferredBackBufferWidth / 2) - gameOverFont.MeasureString("GAME OVER").X / 2, (_graphics.PreferredBackBufferHeight / 2) - gameOverFont.MeasureString("GAME OVER").Y / 2 - 100), Color.Black);
-                _spriteBatch.DrawString(restartGameFont, "Press Enter To Restart", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Press Enter To Restart").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Press Enter To Restart").Y / 2), Color.Black * 0.8f);
+                _spriteBatch.DrawString(restartGameFont, "Press Enter To Restart", new Vector2((_graphics.PreferredBackBufferWidth / 2) - restartGameFont.MeasureString("Press Enter To Restart").X / 2, (_graphics.PreferredBackBufferHeight / 2) - restartGameFont.MeasureString("Press Enter To Restart").Y / 2), Color.Black * 0.6f);
                 _spriteBatch.DrawString(scoreFont, "Score: " + score, new Vector2((_graphics.PreferredBackBufferWidth / 2) - scoreFont.MeasureString("Score: " + score.ToString()).X / 2, (_graphics.PreferredBackBufferHeight / 2) - scoreFont.MeasureString("Score: " + score).Y / 2 + 100), Color.Black);
             }
+
             _spriteBatch.End();
             base.Draw(gameTime);
         }

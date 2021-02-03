@@ -143,6 +143,12 @@
 /processorParam:Quality=Best
 /build:Sounds/coinSound.wav
 
+#begin Sounds/hooray.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/hooray.wav
+
 #begin Sounds/jumpingSound.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
