@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/background.jpg</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Coins/coins.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Coins/resized_coins.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Controls/Button.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Fonts/gameOver.spritefont</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Fonts/restartGame.spritefont</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Fonts/score.spritefont</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/level.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/red.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/rsz_trump_iddle.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/rsz_trump_run.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Sounds/coinSound.wav</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Sounds/hooray.wav</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Sounds/jumpingSound.wav</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/Sounds/themeSound.mp3</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/trump_iddle.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/trump_run.png</File>
+    <File>C:/Users/Rahim/SCHOOL/3EACL2/Game Development/game-development-project-2020-2021-Rahim5/2DGame/Content/trump_walk.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
